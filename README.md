@@ -25,8 +25,10 @@ Regras:
 if(k){…} não é válido. Deveria ser if(k==1){…}, por exemplo;
 Funções for, while e if não aceitam comparações entre constantes (números), é necessário sempre ter uma variável do lado direito da comparação:
 Exemplo: 
-if(5>6){...} ERRADO*
-x=5; if(x>6){...} CORRETO*
+
+if(5>6){...} *ERRADO*
+
+x=5; if(x>6){...} *CORRETO*
 
 ### EBNF linguagem VEGS (.vgs)
 ```
