@@ -30,7 +30,7 @@ FUNCTIONDEF = "function", id, '(', "receive", VAR_DECL, {',', VAR_DECL}, ';', "r
 
 VAR_DECL = TYPE, EXPRESSION;
 
-STMT = VAR_DECL | WHILE_EXP | IF_EXP | FOR_EXP | EXPRESSION, ';';
+STMT = VAR_DECL | WHILE_EXP | IF_EXP | FOR_EXP | EXPRESSION | RETURN_EXP, ';';
 
 WHILE_EXP = "loop", "while", '(', COMP_EXPRESSION , {"and" | "or", COMP_EXPRESSION},')', '{', STMT*, '}';
 
@@ -38,9 +38,11 @@ IF_EXP = "if", '(', COMP_EXPRESSION , {"and" | "or", COMP_EXPRESSION},')', '{', 
 
 FOR_EXP = "loop", "for", '(', COMP_EXPRESSION, {"and" | "or", COMP_EXPRESSION}, ';', "start", VAR_DECL, ';', "step", EXPRESSION, ';', ')', '{', {STMT}, '}';
 
-EXPRESSION = (id, {'=', EXPRESSION|COMP_EXPRESSION|OPERATION})| OPERATION | id |(return, {id|NUMBER});
+EXPRESSION = (id, {'=', EXPRESSION|COMP_EXPRESSION|OPERATION})| OPERATION ;
 
 COMP_EXPRESSION = id, COMP_OPERATOR, EXPRESSION;
+
+RETURN_EXP = return, {id|NUMBER};
 
 OPERATION = id|NUMBER, OPERATOR, id|NUMBER, {OPERATION};
 
