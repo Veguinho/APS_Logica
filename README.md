@@ -23,6 +23,10 @@ function f1(receive int x, int y, float z, string a; return int;)
 ```
 Regras:
 if(k){…} não é válido. Deveria ser if(k==1){…}, por exemplo;
+Funções for, while e if não aceitam comparações entre constantes (números), é necessário sempre ter uma variável do lado direito da comparação:
+Exemplo: 
+if(5>6){...} ERRADO*
+x=5; if(x>6){...} CORRETO*
 
 ### EBNF linguagem VEGS (.vgs)
 ```
@@ -38,7 +42,7 @@ IF_EXP = "if", '(', COMP_EXPRESSION , {"and" | "or", COMP_EXPRESSION},')', '{', 
 
 FOR_EXP = "loop", "for", '(', COMP_EXPRESSION, {"and" | "or", COMP_EXPRESSION}, ';', "start", VAR_DECL, ';', "step", EXPRESSION, ';', ')', '{', {STMT}, '}';
 
-EXPRESSION = (id, {'=', EXPRESSION|COMP_EXPRESSION|OPERATION})| OPERATION ;
+EXPRESSION = (id, {'=', EXPRESSION|COMP_EXPRESSION|OPERATION})| OPERATION;
 
 COMP_EXPRESSION = id, COMP_OPERATOR, EXPRESSION;
 
