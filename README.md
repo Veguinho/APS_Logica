@@ -25,7 +25,7 @@ function f1(receive int x, int y, float z, string a; return int;)
 Regras:
 if(k){…} não é válido. Deveria ser if(k==1){…}, por exemplo;
 
-EBNF linguagem VEGS (.vgs)
+### EBNF linguagem VEGS (.vgs)
 
 FUNCTIONDEF = "function", id, '(', "receive", VAR_DECL, (',', VAR_DECL)*, ';', "return", "void"|TYPE, ';', ')', '{', STMT*, '}';
 
