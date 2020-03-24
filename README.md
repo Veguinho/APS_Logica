@@ -23,7 +23,8 @@ function f1(receive int x, int y, float z, string a; return int;)
 ```
 Regras:
 if(k){…} não é válido. Deveria ser if(k==1){…}, por exemplo;
-Funções for, while e if não aceitam comparações entre constantes (números), é necessário sempre ter uma variável do lado direito da comparação:
+
+Funções for, while e if não aceitam comparações entre constantes (números), é necessário sempre ter uma variável do lado direito da comparação.
 Exemplo: 
 
 if(5>6){...} *ERRADO*
