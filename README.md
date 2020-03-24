@@ -34,11 +34,9 @@ if(k==1){…} *CORRETO*
 ```
 FUNCTIONDEF = "function", id, '(', "receive", VAR_DECL, {',', VAR_DECL}, ';', "return", "void"|TYPE, ';', ')', '{', {STMT}, '}';
 
-VAR_DECL = TYPE, EXPRESSION;
-
 STMT = VAR_DECL | WHILE_EXP | IF_EXP | FOR_EXP | EXPRESSION | RETURN_EXP, ';';
 
-WHILE_EXP = "loop", "while", '(', COMP_EXPRESSION , {"and" | "or", COMP_EXPRESSION},')', '{', STMT*, '}';
+WHILE_EXP = "loop", "while", '(', COMP_EXPRESSION , {"and" | "or", COMP_EXPRESSION},')', '{', {STMT}, '}';
 
 IF_EXP = "if", '(', COMP_EXPRESSION , {"and" | "or", COMP_EXPRESSION},')', '{', {STMT}, '}';
 
@@ -51,6 +49,8 @@ COMP_EXPRESSION = id, COMP_OPERATOR, EXPRESSION;
 RETURN_EXP = return, {id|NUMBER};
 
 OPERATION = id|NUMBER, OPERATOR, id|NUMBER, {OPERATION};
+
+VAR_DECL = TYPE, EXPRESSION;
 
 COMP_OPERATOR = '==' | '>=' | '<=' | '!=' | '<'| '>';
 
