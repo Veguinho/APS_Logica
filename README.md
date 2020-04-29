@@ -4,7 +4,7 @@
 
 ### EXEMPLO:
 ```
-function f1(receive int x, int y, float z, string a; return int;)
+function f1(receive int x, int y, float z; return int;)
 {
 	float counter = 0.0;
 	loop while(counter < z){
