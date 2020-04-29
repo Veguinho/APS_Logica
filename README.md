@@ -32,32 +32,30 @@ if(k==1){…} *CORRETO*
 
 ### EBNF linguagem VEGS (.vgs)
 ```
-FUNCTIONDEF = "function", id, '(', "receive", VAR_DECL, {',', VAR_DECL}, ';', "return", "void"|TYPE, ';', ')', '{', {STMT}, '}';
+FUNCTIONDEF = "function", id, '(', "receive", VAR_DECL, (',', VAR_DECL)*, ';', "return", "void"|TYPE, ';', ')', '{', STMT*, '}';
 
-STMT = VAR_DECL | WHILE_EXP | IF_EXP | FOR_EXP | EXPRESSION | RETURN_EXP, ';';
+VAR_DECL = TYPE, EXPRESSION;
 
-WHILE_EXP = "loop", "while", '(', COMP_EXPRESSION , {"and" | "or", COMP_EXPRESSION},')', '{', {STMT}, '}';
+STMT = VAR_DECL | WHILE_EXP | IF_EXP | FOR_EXP | EXPRESSION, ';';
 
-IF_EXP = "if", '(', COMP_EXPRESSION , {"and" | "or", COMP_EXPRESSION},')', '{', {STMT}, '}';
+WHILE_EXP = "loop", "while", '(', COMP_EXPRESSION , ("and" | "or", COMP_EXPRESSION)*,')', '{', STMT*, '}';
 
-FOR_EXP = "loop", "for", '(', COMP_EXPRESSION, {"and" | "or", COMP_EXPRESSION}, ';', "start", VAR_DECL, ';', "step", EXPRESSION, ';', ')', '{', {STMT}, '}';
+IF_EXP = "if", '(', COMP_EXPRESSION , ("and" | "or", COMP_EXPRESSION)*,')', '{', STMT*, '}';
 
-EXPRESSION = (id, {'=', EXPRESSION|COMP_EXPRESSION|OPERATION})| OPERATION;
+FOR_EXP = "loop", "for", '(', COMP_EXPRESSION, ("and" | "or", COMP_EXPRESSION)*, ';', "start", VAR_DECL, ';', "step", EXPRESSION, ';', ')', '{', STMT*, '}';
+
+EXPRESSION = (id, ('=', EXPRESSION|COMP_EXPRESSION|OPERATION)*)| OPERATION | id |(return, (id|NUMBER)*);
 
 COMP_EXPRESSION = id, COMP_OPERATOR, EXPRESSION;
 
-RETURN_EXP = return, {id|NUMBER};
-
-OPERATION = id|NUMBER, OPERATOR, id|NUMBER, {OPERATION};
-
-VAR_DECL = TYPE, EXPRESSION;
+OPERATION = id|NUMBER, OPERATOR, id|NUMBER, OPERATION*;
 
 COMP_OPERATOR = '==' | '>=' | '<=' | '!=' | '<'| '>';
 
 OPERATOR = '+' | '-' | '*' | '/';
 
-NUMBER = DIGIT, {DIGIT};
+NUMBER = DIGIT, DIGIT*;
 
-TYPE = "int"|"float"|"string";
+TYPE = "int"|"float";
 
 DIGIT = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
