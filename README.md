@@ -3,9 +3,9 @@
 ## Linguagem de programação .vegs
 
 ### Compilação
-1 - Crie um programa válido e salve com a extensão .vegs
-2 - Rode com python3 o arquivo main.py e passe como entrada o arquivo .vegs: ```python main.py entrada.vegs```
-3 - Se passar na compilação, você verá o resultado de seu programa no terminal
+1 - Crie um programa válido e salve com a extensão .vegs 
+2 - Rode com python3 o arquivo main.py e passe como entrada o arquivo .vegs: ```python main.py entrada.vegs``` 
+3 - Se passar na compilação, você verá o resultado de seu programa no terminal 
 
 ### Exemplo de código:
 ```
