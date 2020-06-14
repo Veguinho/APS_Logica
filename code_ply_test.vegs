@@ -1,0 +1,6 @@
+{
+    string c = "alou";
+    if(1){
+        print(1);
+    }
+}

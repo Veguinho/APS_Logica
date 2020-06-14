@@ -1,61 +1,103 @@
 # APS de uma linguagem de programação nova - Lógica da Computação - Insper 2020.1 - Rafael Vieira Rosenzvaig
 
-## Linguagem de programação .vgs
+## Linguagem de programação .vegs
 
 ### EXEMPLO:
 ```
-function f1(receive int x, int y, float z; return int;)
 {
-	float counter = 0.0;
-	loop while(counter < z){
-		counter = counter + 0.1;
+	int function f1(int x, int y, int z){
+		int counter = 0;
+		loop while(counter < z){
+			counter = counter + 1;
+		}
+		if((x > y) and (x > x+y) or (x > y-x)){
+			print(x);
+			return x;
+		}
+		else{
+			print(y);
+			return y;
+		}
 	}
-	loop for(t < 100; start int t=0; step t=t+2;){
-		counter = counter - 0.1;
-	}
-	if(x > y and x > x+y or x > y-x){
-		return x;
-	}
-	else{
-		return y;
-	}
+	int a = 5;
+	int b = 6;
+	int c = 7;
+	int return_val = f1(a,b,c);
+	print(return_val);
 }
+
 ```
+### Características:
+- Linguagem para facilitar o aprendizado de programação:
+	- Similar à sintaxe do C;
+	- Operações flexíveis como Python. Exemplo: print e operações entre tipos diferentes sem conversão;
+	- Restringe o programador para seguir boas práticas. Exemplo: Declarar 2 vezes a mesma variável no mesmo contexto;
+	- Da liberdade de operação com tipos diferentes;
+	- Tipagem para funções;
+	- Label "loop" para destacar loops;
+- Tipos disponíveis:
+	- int
+	- bool
+	- string
+	- void (funções)
+- Operadores disponíveis:
+	- +
+	- -
+	- /
+	- *
+	- >
+	- <
+	- <=
+	- >=
+	- !=
+	- ==
+
 ### Regras:
-Funções for, while e if não aceitam comparações entre constantes (números), é necessário sempre ter uma variável do lado esquerdo da comparação. Exemplo:  
-if(5>6){...} *ERRADO*  
-x=5; if(x>6){...} *CORRETO* 
+- Não se pode declarar a mesma variável mais de uma vez no mesmo contexto;
+- Todo programa deve estar envolto em {};
+- É possível realizar operações entre int e bool, e bool será convertido para int;
+- Se uma função não retorna nada, nenhuma variável pode ser atribuída por ela;
+- Não existe tipo nulo;
 
-if(k){…} *ERRADO*   
-if(k==1){…} *CORRETO*
-
-
-### EBNF linguagem VEGS (.vgs)
+### EBNF linguagem VEGS (.vegs)
 ```
-FUNCTIONDEF = "function", id, '(', "receive", VAR_DECL, (',', VAR_DECL)*, ';', "return", "void"|TYPE, ';', ')', '{', STMT*, '}';
+BLOCK = "{", {COMMAND}, "}";
 
-VAR_DECL = TYPE, EXPRESSION;
+COMMAND = ( λ | ASSIGNMENT | PRINT | ("return", RELEXPR) | FUNCTION), ";" | BLOCK | WHILE | IF | ( (FUNC_TYPE, "function")+, FUNCTION, BLOCK);
 
-STMT = VAR_DECL | WHILE_EXP | IF_EXP | FOR_EXP | EXPRESSION, ';';
+FUNCTION = IDENTIFIER, "(", ( (RELEXPR, {",", RELEXPR})+ )?, ")";
 
-WHILE_EXP = "loop", "while", '(', COMP_EXPRESSION , ("and" | "or", COMP_EXPRESSION)*,')', '{', STMT*, '}';
+WHILE = "loop", "while", "(", RELEXPR, ")", BLOCK;
 
-IF_EXP = "if", '(', COMP_EXPRESSION , ("and" | "or", COMP_EXPRESSION)*,')', '{', STMT*, '}';
+IF = "if", "(", RELEXPR, ")", BLOCK, ("else", BLOCK)?;
 
-FOR_EXP = "loop", "for", '(', COMP_EXPRESSION, ("and" | "or", COMP_EXPRESSION)*, ';', "start", VAR_DECL, ';', "step", EXPRESSION, ';', ')', '{', STMT*, '}';
+ASSIGNMENT = VAR_TYPE+, IDENTIFIER, "=", EXPRESSION;
 
-EXPRESSION = (id, ('=', EXPRESSION|COMP_EXPRESSION|OPERATION)*)| OPERATION | id |(return, (id|NUMBER)*);
+PRINT = "print", "(", EXPRESSION, ")";
 
-COMP_EXPRESSION = id, COMP_OPERATOR, EXPRESSION;
+EXPRESSION = TERM, {("+" | "-" | "or"), TERM};
 
-OPERATION = id|NUMBER, OPERATOR, id|NUMBER, OPERATION*;
+RELEXPR = EXPRESSION, {("==" | ">" | "<" | ">=" | "<=" | "!="), EXPRESSION};
 
-COMP_OPERATOR = '==' | '>=' | '<=' | '!=' | '<'| '>';
+TERM = FACTOR, { ("*" | "/" | "and"), FACTOR };
 
-OPERATOR = '+' | '-' | '*' | '/';
+FACTOR = ("+" | "-" | "!"), FACTOR | NUMBER | "(", RELEXPR, ")" | IDENTIFIER | FUNCTION | STRING | BOOLEAN;
 
-NUMBER = DIGIT, DIGIT*;
+IDENTIFIER = LETTER, {LETTER | DIGIT | "_"};
 
-TYPE = "int"|"float";
+NUMBER = DIGIT, {DIGIT};
 
-DIGIT = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+STRING = """, (LETTER | DIGIT), {LETTER | DIGIT}, """;
+
+BOOLEAN = "true" | "false";
+
+LETTER = ( a | ... | z | A | ... | Z );
+
+DIGIT = ( 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 );
+
+FUNC_TYPE = "int", "string", "bool", "void";
+
+VAR_TYPE = "int", "string", "bool";
+
+NUMBER = DIGIT, {DIGIT};
+```

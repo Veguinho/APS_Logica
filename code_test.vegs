@@ -1,0 +1,11 @@
+{
+    print(2+2*10);
+    int counter = 0;
+    int co = 3;
+    int z = 5;
+    loop while(counter < z){
+        print("alou");
+        counter = counter + 1;
+        co = co + 1;
+    }
+}

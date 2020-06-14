@@ -1,0 +1,26 @@
+{
+    void function printa(){
+        print("hi");    
+    }
+    int function sominha(int a, int b, string k){
+        int counter = 0;
+        int z = 8;  
+        loop while((counter < z) and (3>5)){
+            print("nowhile");
+            counter = counter + 1;
+        }
+        print(k);
+        return b;
+    } 
+    printa();
+    bool lipton = !true;
+    int a = 0;
+    a = -3;
+    int b = 5;
+    string k = "entrei";   
+    a = sominha(a,b,k);
+    string c = "alou";
+    if(c=="alou"){
+        print(1+!true);
+    }
+}
