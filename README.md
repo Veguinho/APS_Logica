@@ -57,7 +57,7 @@
 	- "<="
 	- ">="
 	- "!="
-	- =="
+	- "=="
 
 ### Regras:
 - Não se pode declarar a mesma variável mais de uma vez no mesmo contexto;
