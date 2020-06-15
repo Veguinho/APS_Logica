@@ -89,7 +89,7 @@ class Tokenizer:
             self.actual = Token('string', string)
             self.position += 1
         elif self.origin[self.position].isalpha(): #Checks for key words
-            while self.position < len(self.origin) and self.origin[self.position].isalpha():
+            while self.position < len(self.origin) and (self.origin[self.position].isalpha() or self.origin[self.position].isnumeric() or self.origin[self.position] == '_'):
                 string += self.origin[self.position]
                 self.position += 1
             string = string.lower()
