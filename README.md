@@ -17,7 +17,7 @@
 		loop while(counter < z){
 			counter = counter + 1;
 		}
-		if((x > y) and (x > x+y) or (x > y-x)){
+		if(x > y){
 			print(x);
 			return x;
 		}
@@ -29,8 +29,8 @@
 	int a = 5;
 	int b = 6;
 	int c = 7;
-	int return_val = f1(a,b,c);
-	print(return_val);
+	int returnval = f1(a,b,c);
+	print(returnval);
 }
 
 ```
