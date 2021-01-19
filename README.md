@@ -36,12 +36,12 @@
 ```
 ### Características:
 - Linguagem para facilitar o aprendizado de programação:
-	- Similar à sintaxe do C;
-	- Operações flexíveis como Python. Exemplo: print e operações entre tipos diferentes sem conversão;
-	- Restringe o programador para seguir boas práticas. Exemplo: Declarar 2 vezes a mesma variável no mesmo contexto;
+	- É similar à sintaxe do C;
+	- Possúi operações flexíveis como Python. Exemplo: print e operações entre tipos diferentes sem conversão;
+	- Restringe o programador para seguir boas práticas. Exemplo: Não é permitido declarar 2 vezes a mesma variável no mesmo contexto;
 	- Da liberdade de operação com tipos diferentes;
-	- Tipagem para funções;
-	- Label "loop" para destacar loops;
+	- Fornece tipagem para funções;
+	- Usa a label "loop" para destacar loops;
 - Tipos disponíveis:
 	- int
 	- bool
